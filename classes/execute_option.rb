@@ -1,6 +1,4 @@
-=begin
-method for choosing operations by number
-=end
+# method for choosing operations by number
 
 def execute_option(app, number)
   case number

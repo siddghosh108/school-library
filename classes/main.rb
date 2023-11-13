@@ -1,6 +1,4 @@
-=begin
-main appleication interface
-=end
+# main appleication interface
 
 require './classes/app'
 require './classes/execute_option'
