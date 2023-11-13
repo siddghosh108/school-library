@@ -12,27 +12,25 @@ class App
     @rentals = []
   end
 
-  def name_age
-    print 'Age: '
-    age = gets.chomp.to_i
-    print 'Name: '
-    name = gets.chomp
-    age & name
-  end
-
   def create_person
     print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     type = gets.chomp.to_i
     case type
     when 1
-      name_age
+      print 'Age: '
+      age = gets.chomp.to_i
+      print 'Name: '
+      name = gets.chomp
       print 'Has parent permission? [Y/N]: '
       parent_permission = gets.chomp
       person = Student.new(age, parent_permission, name: name)
       @people.push(person)
       puts "Student '#{name}' created successfully"
     when 2
-      name_age
+      print 'Age: '
+      age = gets.chomp.to_i
+      print 'Name: '
+      name = gets.chomp
       print 'Specialization: '
       specialization = gets.chomp
       person = Teacher.new(age, specialization, name: name)
