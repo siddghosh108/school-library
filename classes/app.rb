@@ -89,14 +89,21 @@ class App
     if @rentals.empty?
       puts 'There are no rentals to show'
     else
-      puts 'ID of person: '
+      list_people
+      print 'Enter the ID of the person to list rentals: '
       person_id = gets.chomp.to_i
-      puts 'Rentals: '
-      @rentals.each do |rental|
-        if person_id == rental.person.id
+  
+      matching_rentals = @rentals.select { |rental| rental.person.id == @people[person_id].id }
+  
+      if matching_rentals.empty?
+        puts 'No rentals found for the specified person ID.'
+      else
+        puts 'Rentals:'
+        matching_rentals.each do |rental|
           puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}"
         end
       end
     end
   end
+
 end
