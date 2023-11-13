@@ -1,8 +1,8 @@
 require_relative 'app'
 require_relative 'execute_option'
-
 app = App.new
 
+# rubocop:disable Metrics/CyclomaticComplexity
 def main(app)
   puts 'Welcome to School Library App!'
   loop do
@@ -36,5 +36,6 @@ def main(app)
     end
   end
 end
+# rubocop:enable Metrics/CyclomaticComplexity
 
 main(app)

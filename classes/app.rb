@@ -13,6 +13,7 @@ class App
   end
 
   def create_person
+    person = Student.new(age, parent_permission, name: name)
     print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     type = gets.chomp.to_i
     case type
