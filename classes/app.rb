@@ -92,9 +92,7 @@ class App
       list_people
       print 'Enter the ID of the person to list rentals: '
       person_id = gets.chomp.to_i
-  
       matching_rentals = @rentals.select { |rental| rental.person.id == @people[person_id].id }
-  
       if matching_rentals.empty?
         puts 'No rentals found for the specified person ID.'
       else
@@ -105,5 +103,4 @@ class App
       end
     end
   end
-
 end
