@@ -1,3 +1,7 @@
+=begin
+main appleication interface
+=end
+
 require './classes/app'
 require './classes/execute_option'
 app = App.new

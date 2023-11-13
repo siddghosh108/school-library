@@ -5,6 +5,10 @@ require_relative 'student'
 require_relative 'teacher'
 require_relative 'classroom'
 
+=begin
+get operation's number from user
+=end
+
 class App
   def initialize
     @books = []
