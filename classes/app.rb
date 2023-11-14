@@ -5,7 +5,6 @@ require_relative 'student'
 require_relative 'teacher'
 require_relative 'classroom'
 require_relative 'preserve_data'
-# rubocop:disable Metrics/ClassLength
 class App
   def initialize
     @books = []
@@ -106,7 +105,13 @@ class App
     teacher.id = data['id']
     teacher
   end
-  
+
+  def save_data
+    SaveData.new().save_books
+    SaveData.new().save_people
+    SaveData.new().save_rentals
+  end
+
   def select_book
     puts 'Select a book from the following list by number:'
     list_books
@@ -167,4 +172,3 @@ class App
     end
   end
 end
-# rubocop:enable Metrics/ClassLength
