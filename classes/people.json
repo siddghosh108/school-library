@@ -29,5 +29,12 @@
     "age": 50,
     "name": "ben",
     "specialization": "abcd"
+  },
+  {
+    "type": "teacher",
+    "id": 79,
+    "age": 666,
+    "name": "666",
+    "specialization": "666"
   }
 ]
