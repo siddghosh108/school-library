@@ -1,6 +1,6 @@
 class SaveData
-    # save books
-   def save_books
+  # save books
+  def save_books
     # Store books data
     books_data = @books.map { |book| { title: book.title, author: book.author } }
     WriteFile.new('books.json').write(books_data)

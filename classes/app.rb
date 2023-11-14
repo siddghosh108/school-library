@@ -77,9 +77,10 @@ class App
     teachers = []
 
     people_data.each do |person|
-      if person['type'] == 'student'
+      case person['type']
+      when 'student'
         students.push(load_student_data(person))
-      elsif person['type'] == 'teacher'
+      when 'teacher'
         teachers.push(load_teacher_data(person))
       end
     end
@@ -107,9 +108,9 @@ class App
   end
 
   def save_data
-    SaveData.new().save_books
-    SaveData.new().save_people
-    SaveData.new().save_rentals
+    SaveData.new.save_books
+    SaveData.new.save_people
+    SaveData.new.save_rentals
   end
 
   def select_book
@@ -144,7 +145,7 @@ class App
       list_people
       print 'Enter the ID of the person to list rentals: '
       person_id = gets.chomp.to_i
-      puts 'ID: #{person_id}'
+      puts "ID: #{person_id}"
       rentals_data = ReadFile.new('rentals.json').read || []
       matching_rentals = rentals_data.select do |rental|
         rental['person']['id'].to_i == person_id.to_i
@@ -154,7 +155,7 @@ class App
       else
         puts 'Rentals:'
         matching_rentals.each do |rental|
-          #puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}"
+          # puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}"
           puts "Date: #{rental['date']}, Book '#{rental['book']['title']}' by #{rental['book']['author']}"
 
           person_type = rental['person']['type']
