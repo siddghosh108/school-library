@@ -1,9 +1,10 @@
+require 'json'
 require_relative 'app'
 require_relative 'execute_option'
 app = App.new
 
-# rubocop:disable Metrics/CyclomaticComplexity
 def main(app)
+  app.load_data
   puts 'Welcome to School Library App!'
   loop do
     puts 'Please choose an option by entering a number:'
@@ -18,24 +19,18 @@ def main(app)
     number = gets.chomp.to_i
     break if number == 7
 
-    case number
-    when 1
-      app.list_books
-    when 2
-      app.list_people
-    when 3
-      app.create_person
-    when 4
-      app.create_book
-    when 5
-      app.create_rental
-    when 6
-      app.list_rentals
+    if number == 6
+      puts 'Enter the ID of the person: '
+      person_id = gets.chomp.to_i
+      app.list_rentals(person_id)
     else
-      puts 'Invalid option. Please enter a valid number.'
+      execute_option(app, number)
     end
   end
 end
-# rubocop:enable Metrics/CyclomaticComplexity
+
+at_exit do
+  app.save_data
+end
 
 main(app)
