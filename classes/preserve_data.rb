@@ -5,7 +5,7 @@ class PreserveData
   def initialize(file_name)
     @file_name = file_name
   end
-  end
+end
 
 class WriteFile < PreserveData
   def write(data)
