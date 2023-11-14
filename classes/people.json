@@ -4,5 +4,40 @@
     "id": 902,
     "age": 20,
     "name": "sidd"
+<<<<<<< HEAD
+=======
+  },
+  {
+    "type": "student",
+    "id": 653,
+    "age": 20,
+    "name": "sidd"
+  },
+  {
+    "type": "student",
+    "id": 858,
+    "age": 20,
+    "name": "sidd"
+  },
+  {
+    "type": "student",
+    "id": 804,
+    "age": 18,
+    "name": "ben"
+  },
+  {
+    "type": "teacher",
+    "id": 472,
+    "age": 50,
+    "name": "ben",
+    "specialization": "abcd"
+  },
+  {
+    "type": "teacher",
+    "id": 79,
+    "age": 666,
+    "name": "666",
+    "specialization": "666"
+>>>>>>> 2165116e83222f1ca11c02e15fc7e6752ed7da2a
   }
 ]

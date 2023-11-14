@@ -1,5 +1,6 @@
 require_relative 'app'
 require_relative 'execute_option'
+require_relative 'saving_methods'
 app = App.new
 
 # rubocop:disable Metrics/CyclomaticComplexity
