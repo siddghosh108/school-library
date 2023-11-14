@@ -4,6 +4,7 @@ app = App.new
 
 # rubocop:disable Metrics/CyclomaticComplexity
 def main(app)
+  app.load_data
   puts 'Welcome to School Library App!'
   loop do
     puts 'Please choose an option by entering a number:'
@@ -35,6 +36,10 @@ def main(app)
       puts 'Invalid option. Please enter a valid number.'
     end
   end
+end
+
+at_exit do
+  app.save_data
 end
 # rubocop:enable Metrics/CyclomaticComplexity
 

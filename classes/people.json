@@ -1,0 +1,33 @@
+[
+  {
+    "type": "student",
+    "id": 821,
+    "age": 20,
+    "name": "sidd"
+  },
+  {
+    "type": "student",
+    "id": 653,
+    "age": 20,
+    "name": "sidd"
+  },
+  {
+    "type": "student",
+    "id": 858,
+    "age": 20,
+    "name": "sidd"
+  },
+  {
+    "type": "student",
+    "id": 804,
+    "age": 18,
+    "name": "ben"
+  },
+  {
+    "type": "teacher",
+    "id": 472,
+    "age": 50,
+    "name": "ben",
+    "specialization": "abcd"
+  }
+]
