@@ -78,9 +78,10 @@ class App
     teachers = []
 
     people_data.each do |person|
-      if person['type'] == 'student'
+      case person['type']
+      when 'student'
         students.push(load_student_data(person))
-      elsif person['type'] == 'teacher'
+      when 'teacher'
         teachers.push(load_teacher_data(person))
       end
     end
@@ -106,7 +107,53 @@ class App
     teacher.id = data['id']
     teacher
   end
-  
+
+  def save_data
+    save_books
+    save_people
+    save_rentals
+  end
+
+  # save books
+  def save_books
+    # Store books data
+    books_data = @books.map { |book| { title: book.title, author: book.author } }
+    WriteFile.new('books.json').write(books_data)
+ end
+
+  # save people
+  def save_people
+    # Store people data only if there are people objects
+    return unless @people.any?
+
+    students_data = @people.select { |person| person.is_a?(Student) }.map do |student|
+      { type: 'student', id: student.id, age: student.age, name: student.name }
+    end
+    teachers_data = @people.select { |person| person.is_a?(Teacher) }.map do |teacher|
+      { type: 'teacher', id: teacher.id, age: teacher.age, name: teacher.name,
+        specialization: teacher.specialization }
+    end
+    people_data = students_data + teachers_data
+    WriteFile.new('people.json').write(people_data)
+  end
+
+  # save rentals
+  def save_rentals
+    # Store rentals data if available
+    return unless @rentals.any?
+
+    existing_rentals = ReadFile.new('rentals.json').read || []
+    rentals_data = existing_rentals + @rentals.map do |rental|
+      {
+        date: rental.date,
+        book: { title: rental.book.title, author: rental.book.author },
+        person: { type: rental.person.class.to_s.downcase, id: rental.person.id, age: rental.person.age,
+                  name: rental.person.name }
+      }
+    end
+    WriteFile.new('rentals.json').write(rentals_data)
+  end
+
   def select_book
     puts 'Select a book from the following list by number:'
     list_books
@@ -139,7 +186,7 @@ class App
       list_people
       print 'Enter the ID of the person to list rentals: '
       person_id = gets.chomp.to_i
-      puts 'ID: #{person_id}'
+      puts "ID: #{person_id}"
       rentals_data = ReadFile.new('rentals.json').read || []
       matching_rentals = rentals_data.select do |rental|
         rental['person']['id'].to_i == person_id.to_i
@@ -149,7 +196,7 @@ class App
       else
         puts 'Rentals:'
         matching_rentals.each do |rental|
-          #puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}"
+          # puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}"
           puts "Date: #{rental['date']}, Book '#{rental['book']['title']}' by #{rental['book']['author']}"
 
           person_type = rental['person']['type']
