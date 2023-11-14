@@ -1,0 +1,15 @@
+[
+  {
+    "date": "12/02/2023",
+    "book": {
+      "title": "t2",
+      "author": "a2"
+    },
+    "person": {
+      "type": "teacher",
+      "id": 472,
+      "age": 50,
+      "name": "ben"
+    }
+  }
+]
